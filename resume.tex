@@ -1,4 +1,4 @@
-\documentclass[9pt]{scrartcl}
+\documentclass[9pt,fleqn]{scrartcl}
 \usepackage[landscape,margin=20pt]{geometry}
 
 \usepackage{amsmath}
@@ -32,9 +32,15 @@
 \begin{document}
 \begin{multicols}{4}
 \section{Perceptron Algorithm}
-The perceptron algorithm terminates after no more than $1/\gamma^2$
-updates, where $\gamma = \min_{i=1,\dots,n} t_i\bf w_*^T\bf \tilde
-\Phi_i$. Update rule (when misclassified): $\bf w \leftarrow \bf w + t_i\bf\phi_i$.
+Terminates after no more than $1/\gamma^2$ updates, where 
+$\gamma = \min_{i=1,\dots,n} t_i\mathbf{w}_*^T\mathbf{\tilde
+\Phi}_i$
+
+Update rule (when misclassified): $\mathbf{w} \leftarrow \mathbf{w} +
+t_i\mathbf{\phi_i}$
+
+\section{Gradient Descent}
+$\mathbf{w}_{k+1} = \mathbf{w}_k + \eta E_{\nabla \mathbf w}(\mathbf{w}_k)$
 
 \end{multicols}
 \end{document}
