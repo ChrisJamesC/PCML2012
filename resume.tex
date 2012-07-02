@@ -19,15 +19,16 @@
 
 \graphicspath{{img/}}
 
-
 %Commands to format and shorten
 \setlength{\columnseprule}{0.2pt}
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0em plus 0.2em minus 0.2em}%plus 0.1ex minus 0.2ex}
 
+%% AMSMath operators
+\DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator{\E}{E}
+
 \pagestyle{empty} 
-
-
 
 \begin{document}
 \begin{multicols}{4}
@@ -50,9 +51,11 @@ $\mathbf{w}_{k+1} = \mathbf{w}_k + \eta E_{\nabla \mathbf w}(\mathbf{w}_k)$
 t) \]
 
 \section{Bayes Classifier}
-% TODO add
 \paragraph{Bayes-Optimal Classifier}
-\paragraph{Bayes Risk}
+\[ f^*(\mathbf x) = \argmax_{t \in \tau} P(t|\mathbf x) = \argmax_{t
+  \in \tau} p(\mathbf x|t) P(t) \]
+\paragraph{Bayes Error}
+\[ 1 - \E \left [ \max_{k\in\tau} P(t = k | \mathbf x) \right ] \]
 \paragraph{Loss Function}
 
 \end{multicols}
