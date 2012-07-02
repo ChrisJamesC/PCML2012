@@ -42,9 +42,12 @@ t_i\mathbf{\phi_i}$
 \section{Gradient Descent}
 $\mathbf{w}_{k+1} = \mathbf{w}_k + \eta E_{\nabla \mathbf w}(\mathbf{w}_k)$
 \paragraph{Least square estimation}
-$$E(\bf w) = \frac12 \sum_{i=1}^n(y(\bf x_i)-t_i)^2= \frac12 \|\bf\Phi\bf w- \bf t\|^2$$
+\[ E(\mathbf w) = \frac12 \sum_{i=1}^n(y(\mathbf x_i)-t_i)^2= \frac12
+\|\mathbf\Phi\mathbf w- \mathbf t\|^2 \]
 \paragraph{Gradient for Squared Error}
-$$\nabla_{\bf w}E= \sum_{i=1}^n\frac{\partial E}{\partial y_i} \nabla_{\bf w}y_i = \bf\Phi^T(\bf \Phi \bf w - \bf t)$$
+\[ \nabla_{\mathbf w}E= \sum_{i=1}^n\frac{\partial E}{\partial y_i}
+\nabla_{\mathbf w}y_i = \mathbf\Phi^T(\mathbf \Phi \mathbf w - \mathbf
+t) \]
 
 \section{Bayes Classifier}
 % TODO add
