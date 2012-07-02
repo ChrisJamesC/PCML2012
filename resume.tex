@@ -26,6 +26,7 @@
 
 %% AMSMath operators
 \DeclareMathOperator*{\argmax}{argmax}
+\DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator{\E}{E}
 
 \pagestyle{empty} 
@@ -50,13 +51,17 @@ $\mathbf{w}_{k+1} = \mathbf{w}_k + \eta E_{\nabla \mathbf w}(\mathbf{w}_k)$
 \nabla_{\mathbf w}y_i = \mathbf\Phi^T(\mathbf \Phi \mathbf w - \mathbf
 t) \]
 
-\section{Bayes Classifier}
+\section{Decision Theory}
+\paragraph{Risk / Error}
+\[ R(f) = \E \left [ L(f(\mathbf x), t) \right ] \]
+
 \paragraph{Bayes-Optimal Classifier}
 \[ f^*(\mathbf x) = \argmax_{t \in \tau} P(t|\mathbf x) = \argmax_{t
   \in \tau} p(\mathbf x|t) P(t) \]
+\[ f^*(\mathbf x) = \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) P(t
+= k | \mathbf x) \]
 \paragraph{Bayes Error}
 \[ 1 - \E \left [ \max_{k\in\tau} P(t = k | \mathbf x) \right ] \]
-\paragraph{Loss Function}
 
 \end{multicols}
 \end{document}
