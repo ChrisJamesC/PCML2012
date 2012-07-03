@@ -1,12 +1,12 @@
-\documentclass[9pt,fleqn]{scrartcl}
-\usepackage[landscape,margin=20pt]{geometry}
+\documentclass[10pt]{scrartcl}
+\usepackage[a5paper,landscape,margin=20pt]{geometry}
 
-\usepackage{amsmath}
+\usepackage[fleqn]{amsmath}
 \usepackage{amssymb}
 \usepackage{multicol}
 \usepackage{graphicx}
 \usepackage{setspace}
-\usepackage[compact]{titlesec}
+\usepackage[small,compact]{titlesec}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -33,7 +33,7 @@
 
 \begin{document}
 \begin{multicols}{4}
-\section{Perceptron Algorithm}
+\section{Perceptron Alg.}
 Terminates after no more than $1/\gamma^2$ updates, where 
 $\gamma = \min_{i=1,\dots,n} t_i\mathbf{w}_*^T\mathbf{\tilde
 \Phi}_i$
@@ -43,25 +43,32 @@ t_i\mathbf{\phi_i}$
 
 \section{Gradient Descent}
 $\mathbf{w}_{k+1} = \mathbf{w}_k + \eta E_{\nabla \mathbf w}(\mathbf{w}_k)$
+
 \paragraph{Least square estimation}
-\[ E(\mathbf w) = \frac12 \sum_{i=1}^n(y(\mathbf x_i)-t_i)^2= \frac12
-\|\mathbf\Phi\mathbf w- \mathbf t\|^2 \]
+\begin{flalign*} E(\mathbf w) &= \frac12 \sum_{i=1}^n(y(\mathbf x_i)-t_i)^2 \hfill \\ 
+&= \frac12  \|\mathbf\Phi\mathbf w- \mathbf t\|^2 
+\end{flalign*}
+
 \paragraph{Gradient for Squared Error}
-\[ \nabla_{\mathbf w}E= \sum_{i=1}^n\frac{\partial E}{\partial y_i}
-\nabla_{\mathbf w}y_i = \mathbf\Phi^T(\mathbf \Phi \mathbf w - \mathbf
-t) \]
+\begin{align*} \nabla_{\mathbf w}E&= \sum_{i=1}^n\frac{\partial E}{\partial y_i}
+\nabla_{\mathbf w}y_i \\
+&= \mathbf\Phi^T(\mathbf \Phi \mathbf w - \mathbf
+t)
+\end{align*}
 
 \section{Decision Theory}
 \paragraph{Risk / Error}
 \[ R(f) = \E \left [ L(f(\mathbf x), t) \right ] \]
 
 \paragraph{Bayes-Optimal Classifier}
-\[ f^*(\mathbf x) = \argmax_{t \in \tau} P(t|\mathbf x) = \argmax_{t
-  \in \tau} p(\mathbf x|t) P(t) \]
-\[ f^*(\mathbf x) = \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) P(t
-= k | \mathbf x) \]
+\begin{align*}
+f^*(\mathbf x) &= \argmax_{t \in \tau} P(t|\mathbf x) \\ 
+&= \argmax_{t \in \tau} p(\mathbf x|t) P(t) \\
+f^*(\mathbf x) &= \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) \\ 
+ &= P(t = k | \mathbf x) \end{align*}
+
 \paragraph{Bayes Error}
-\[ 1 - \E \left [ \max_{k\in\tau} P(t = k | \mathbf x) \right ] \]
+\begin{equation*} 1 - \E \left [ \max_{k\in\tau} P(t = k | \mathbf x) \right ] \end{equation*}
 
 \end{multicols}
 \end{document}
