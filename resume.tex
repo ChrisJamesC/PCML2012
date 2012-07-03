@@ -58,7 +58,7 @@ Stochastic $\mathbf{w}_{k+1} = \mathbf{w}_k - \eta \nabla_{\mathbf w}E_i(\mathbf
 \end{flalign*}
 
 \paragraph{Gradient for Squared Error}
-(yields normal equation for least squares!)
+(yields normal equation for least squares if set to 0)
 \begin{align*} \nabla_{\mathbf w}E&= \sum_{i=1}^n\frac{\partial E}{\partial y_i}
 \nabla_{\mathbf w}y_i \\
 &= \mathbf\Phi^T( \underbrace{\mathbf \Phi \mathbf w - \mathbf t}_{residual})
@@ -91,10 +91,17 @@ $\langle x \rangle = n^{-1} \sum_i x_i $. Similar for $t, tx, x^2$
 \[\rightarrow w=\frac{Cov(x,t)}{Var(x)}, b=\langle t \rangle - w \langle x \rangle \]
 
 \paragraph{Normal Equations}
-\[ \mathbf{(\Phi^{T}\Phi) w = \Phi^{T} t}\]
-\[ \hat{\mathbf{w}} = ...\]
+\[ \mathbf{(\Phi}^{T}\mathbf{\Phi) w = \Phi}^{T} \mathbf{t}\]
+\[ \hat{\mathbf{w}} = \argmin_w E(\mathbf{w}) = \mathbf{(\Phi}^{T}\mathbf{\Phi)}^{-1} \mathbf{\Phi}^{T}  \mathbf{t} \]
 
-\section{Decision Theory}
+\section{Probability. Decision Theory}
+\paragraph{Probability}
+\[\]
+Sum rule: $P(X) = \sum_Y P(X,Y)$\\
+Product rule: $P(X,Y) = P(X|Y)P(Y)$
+Bayes  \[P(B|F) = \frac{P(F|B)P(B)}{P(F)}\]
+\[E[X] = E[E[X|Y]]\]
+\[Var(t) = E[Var(t|x)] + Var(E[t|x]) \]
 \paragraph{Risk / Error}
 \[ R(f) = \E \left [ L(f(\mathbf x), t) \right ] \]
 
@@ -102,8 +109,7 @@ $\langle x \rangle = n^{-1} \sum_i x_i $. Similar for $t, tx, x^2$
 \begin{align*}
 f^*(\mathbf x) &= \argmax_{t \in \tau} P(t|\mathbf x) \\ 
 &= \argmax_{t \in \tau} p(\mathbf x|t) P(t) \\
-f^*(\mathbf x) &= \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) \\ 
- &= P(t = k | \mathbf x) \end{align*}
+f^*(\mathbf x) &= \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) P(t = k | \mathbf x) \end{align*}
 
 \paragraph{Bayes Error}
 \begin{equation*} 1 - \E \left [ \max_{k\in\tau} P(t = k | \mathbf x) \right ] \end{equation*}
