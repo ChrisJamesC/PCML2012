@@ -42,13 +42,15 @@
 \subsection{Perceptron Alg.}
 Terminates after no more than $1/\gamma^2$ updates, where 
 $\gamma = \min_{i=1,\dots,n} t_i\mathbf{w}_*^T\mathbf{\tilde
-\Phi}_i$
+\phi}_i$
 
-Update rule (when misclassified): $\mathbf{w} \leftarrow \mathbf{w} +
-t_i\mathbf{\phi_i}$
+Normalize features $\phi_i \rightarrow \tilde{\phi_i}$  !
+
+Update rule (when misclassified $t_i\mathbf{w}^{T} \mathbf {\tilde{\phi_i}} \leq 0$): $\mathbf{w} \leftarrow \mathbf{w} +
+t_i\mathbf{\tilde{\phi_i}}$
 
 \subsection{Gradient Descent}
-$\mathbf{w}_{k+1} = \mathbf{w}_k + \eta E_{\nabla \mathbf w}(\mathbf{w}_k)$
+Stochastic $\mathbf{w}_{k+1} = \mathbf{w}_k - \eta \nabla_{\mathbf w}E_i(\mathbf{w}_k)$
 
 \paragraph{Least square estimation}
 \begin{flalign*} E(\mathbf w) &= \frac12 \sum_{i=1}^n(y(\mathbf x_i)-t_i)^2 \hfill \\ 
@@ -59,8 +61,7 @@ $\mathbf{w}_{k+1} = \mathbf{w}_k + \eta E_{\nabla \mathbf w}(\mathbf{w}_k)$
 (yields normal equation for least squares!)
 \begin{align*} \nabla_{\mathbf w}E&= \sum_{i=1}^n\frac{\partial E}{\partial y_i}
 \nabla_{\mathbf w}y_i \\
-&= \mathbf\Phi^T(\mathbf \Phi \mathbf w - \mathbf
-t)
+&= \mathbf\Phi^T( \underbrace{\mathbf \Phi \mathbf w - \mathbf t}_{residual})
 \end{align*}
 
 
