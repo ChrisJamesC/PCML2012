@@ -79,13 +79,20 @@ Stochastic $\mathbf{w}_{k+1} = \mathbf{w}_k - \eta \nabla_{\mathbf w}E_i(\mathbf
 Wrt b: set $\mathbf{x} = 1$, residual for output layer
 
 \paragraph{Momentum learning}
-
 \[\Delta \mathbf w_k = \mathbf w_{k+1}-\mathbf w_k\]
 \[\Delta \mathbf w_k = -\eta(1-\mu)\nabla_{\textbf w_k}E+\mu \Delta \mathbf w_{k-1}\]
 
 $\eta$ = learning rate e.g. $1/k$, $\mu$ = momentum term
 
 \section{Linear Regression. Least Squares Estimation}
+\paragraph{Univariate Linear Regression}
+$\langle x \rangle = n^{-1} \sum_i x_i $. Similar for $t, tx, x^2$
+\[y_i = wx_i + b \]
+\[\rightarrow w=\frac{Cov(x,t)}{Var(x)}, b=\langle t \rangle - w \langle x \rangle \]
+
+\paragraph{Normal Equations}
+\[ \mathbf{(\Phi^{T}\Phi) w = \Phi^{T} t}\]
+\[ \hat{\mathbf{w}} = ...\]
 
 \section{Decision Theory}
 \paragraph{Risk / Error}
