@@ -46,8 +46,8 @@ $\gamma = \min_{i=1,\dots,n} t_i\mathbf{w}_*^T\mathbf{\tilde
 
 Normalize features $\phi_i \rightarrow \tilde{\phi_i}$  !
 
-Update rule (when misclassified $t_i\mathbf{w}^{T} \mathbf {\tilde{\phi_i}} \leq 0$): $\mathbf{w} \leftarrow \mathbf{w} +
-t_i\mathbf{\tilde{\phi_i}}$
+Update rule (when misclassified $t_i\mathbf{w}^{T} \mathbf {\tilde{\phi_i}} \leq 0$): \[\mathbf{w} \leftarrow \mathbf{w} +
+t_i\mathbf{\tilde{\phi_i}}\]
 
 \subsection{Gradient Descent}
 Stochastic $\mathbf{w}_{k+1} = \mathbf{w}_k - \eta \nabla_{\mathbf w}E_i(\mathbf{w}_k)$
@@ -112,13 +112,30 @@ f^*(\mathbf x) &= \argmax_{t \in \tau} P(t|\mathbf x) \\
 f^*(\mathbf x) &= \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) P(t = k | \mathbf x) \end{align*}
 
 \paragraph{Bayes Error}
-\begin{equation*} 1 - \E \left [ \max_{k\in\tau} P(t = k | \mathbf x) \right ] \end{equation*}
+\[ R^* = R(f^*) = 1 - \E \left [ \max_{k\in\tau} P(t = k | \mathbf x) \right ] \]
 
+\paragraph{Discriminant}
+\[y^*(x) = log \frac{p(\mathbf{x}|t=1)}{p(\mathbf{x}|t=0)} + log \frac{P(t=1)}{P(t=0)} > 0\]
 \section{Probabilistic Models. Maximum Likelihood}
-\paragraph{Covariance}
+\paragraph{Gaussian}
+\[N(x|\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]
+Multivariate $N(\mathbf{x}|\mathbf{\mu},\mathbf{\Sigma}) =$
+\[|2\pi\mathbf{\Sigma}|^{-1/2} e^{-\frac{1}{2}(\mathbf{x}-\mathbf{\mu})^T\mathbf{\Sigma}^{-1}(\mathbf{x}-\mathbf{\mu})}\]
 
+\paragraph{Correlation}
+\[\frac{Cov(x_j,x_k)}{\sqrt{Var(x_j)Var(x_k)}}\]
+
+\paragraph{Covariance}
 $$Cov(\mathbf x, \mathbf y) = \E[\mathbf x \mathbf y ^ T] - \E[\mathbf x]E[\mathbf y]$$
 $$Cov[\mathbf A \mathbf x] = \mathbf A Cov[\mathbf x] \mathbf A^T$$
+
+\paragraph{ML plugin discriminant}
+\begin{equation*}
+\begin{split}
+\hat{y}(\mathbf{x}) = \hat{\mathbf{w}}^T \mathbf{x} - \frac{1}{2}(||\hat{\mathbf{\mu}}_{+1} ||^2 - \hat{\mathbf{\mu}}_{-1} ||^2) \\ + log\frac{\hat{\pi}_1}{1-\hat{\pi}_1} ~ where~ \hat{\pi}_1 = n_1 / n ~ and~  \\ \hat{\mathbf{w}}=\hat{\mathbf{\mu}}_{+1} - \hat{\mathbf{\mu}}_{-1}
+\end{split}
+\end{equation*}
+Multiway \[y_k^*(\mathbf{x}) = -\frac{1}{2}||\mathbf{x}-\mathbf{\mu}_k||^2 + log~P(t=k) + C\]
 
 
 \section{Generalization. Regularization}
