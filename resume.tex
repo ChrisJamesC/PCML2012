@@ -1,12 +1,12 @@
-\documentclass[9pt,fleqn]{scrartcl}
-\usepackage[landscape,margin=20pt]{geometry}
+\documentclass[7pt]{scrartcl}
+\usepackage[a5paper,landscape,margin=5pt]{geometry}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{multicol}
 \usepackage{graphicx}
 \usepackage{setspace}
-\usepackage[compact]{titlesec}
+\usepackage[small,compact]{titlesec}
 
 \usepackage{hyperref}
 \hypersetup{
@@ -29,11 +29,16 @@
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator{\E}{E}
 
+%Section numbering
+\setcounter{secnumdepth}{1}
+\setcounter{section}{1}
+
 \pagestyle{empty} 
 
 \begin{document}
 \begin{multicols}{4}
-\section{Perceptron Algorithm}
+\section{Linear Classification}
+\subsection{Perceptron Alg.}
 Terminates after no more than $1/\gamma^2$ updates, where 
 $\gamma = \min_{i=1,\dots,n} t_i\mathbf{w}_*^T\mathbf{\tilde
 \Phi}_i$
@@ -41,27 +46,61 @@ $\gamma = \min_{i=1,\dots,n} t_i\mathbf{w}_*^T\mathbf{\tilde
 Update rule (when misclassified): $\mathbf{w} \leftarrow \mathbf{w} +
 t_i\mathbf{\phi_i}$
 
-\section{Gradient Descent}
+\subsection{Gradient Descent}
 $\mathbf{w}_{k+1} = \mathbf{w}_k + \eta E_{\nabla \mathbf w}(\mathbf{w}_k)$
+
 \paragraph{Least square estimation}
-\[ E(\mathbf w) = \frac12 \sum_{i=1}^n(y(\mathbf x_i)-t_i)^2= \frac12
-\|\mathbf\Phi\mathbf w- \mathbf t\|^2 \]
+\begin{flalign*} E(\mathbf w) &= \frac12 \sum_{i=1}^n(y(\mathbf x_i)-t_i)^2 \hfill \\ 
+&= \frac12  \|\mathbf\Phi\mathbf w- \mathbf t\|^2 
+\end{flalign*}
+
 \paragraph{Gradient for Squared Error}
-\[ \nabla_{\mathbf w}E= \sum_{i=1}^n\frac{\partial E}{\partial y_i}
-\nabla_{\mathbf w}y_i = \mathbf\Phi^T(\mathbf \Phi \mathbf w - \mathbf
-t) \]
+\begin{align*} \nabla_{\mathbf w}E&= \sum_{i=1}^n\frac{\partial E}{\partial y_i}
+\nabla_{\mathbf w}y_i \\
+&= \mathbf\Phi^T(\mathbf \Phi \mathbf w - \mathbf
+t)
+\end{align*}
+
+
+\section{Multi-Layer Perceptron}
+\paragraph{Forward pass}
+\[a_q^{l} = (\mathbf w_q^{(l)})^T\mathbf z^{(l-1)}+b_q^{(l)}\]
+\[z_q^{(l)}=g(a_q^{(l)})\text{, }q=1,..,h_l\]
+
+\paragraph{Backward pass}
+\[r^{(l)}=\frac{\partial E_i}{\partial a^{(l)}}\]
+\[r_q^{(l)}=g'(a_q^{(l)})\sum_{j=1}^{h_{l+1}}w_{jq}^{(l+1)}r_j^{(l+1)}\]
+
+\paragraph{Update rule}
+
+\[\Delta \mathbf w_k = \mathbf w_{K+1}-\mathbf w_k\]
+\[\Delta \mathbf w_k = -\nu(1-\mu)\nabla_{\textbf w_k}E+\mu \Delta \mathbf w_{k-1}\]
+
+$\nu$ = learning rate, $\mu$ = momentum term
+
+\section{Linear Regression. Least Squares Estimation}
 
 \section{Decision Theory}
 \paragraph{Risk / Error}
 \[ R(f) = \E \left [ L(f(\mathbf x), t) \right ] \]
 
 \paragraph{Bayes-Optimal Classifier}
-\[ f^*(\mathbf x) = \argmax_{t \in \tau} P(t|\mathbf x) = \argmax_{t
-  \in \tau} p(\mathbf x|t) P(t) \]
-\[ f^*(\mathbf x) = \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) P(t
-= k | \mathbf x) \]
-\paragraph{Bayes Error}
-\[ 1 - \E \left [ \max_{k\in\tau} P(t = k | \mathbf x) \right ] \]
+\begin{align*}
+f^*(\mathbf x) &= \argmax_{t \in \tau} P(t|\mathbf x) \\ 
+&= \argmax_{t \in \tau} p(\mathbf x|t) P(t) \\
+f^*(\mathbf x) &= \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) \\ 
+ &= P(t = k | \mathbf x) \end{align*}
 
+\paragraph{Bayes Error}
+\begin{equation*} 1 - \E \left [ \max_{k\in\tau} P(t = k | \mathbf x) \right ] \end{equation*}
+
+\section{Probabilistic Models. Maximum Likelihood}
+\section{Generalization. Regularization}
+\section{Conditional Likelihood. Logistic Regression}
+\section{Support Vector Machines}
+\section{Model Selection and Evaluation}
+\section{Dimensionality Reduction}
+\section{Unsupervised Learning}
+%\appendix{Lagrange Multipliers and Lagrangian Duality}
 \end{multicols}
 \end{document}
