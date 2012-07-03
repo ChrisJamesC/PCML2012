@@ -56,6 +56,22 @@ $\mathbf{w}_{k+1} = \mathbf{w}_k + \eta E_{\nabla \mathbf w}(\mathbf{w}_k)$
 t)
 \end{align*}
 
+\section{Multi-Layer Perceptron}
+\paragraph{Forward pass}
+\[a_q^{l} = (\mathbf w_q^{(l)})^T\mathbf z^{(l-1)}+b_q^{(l)}\]
+\[z_q^{(l)}=g(a_q^{(l)})\text{, }q=1,..,h_l\]
+
+\paragraph{Backward pass}
+\[r^{(l)}=\frac{\partial E_i}{\partial a^{(l)}}\]
+\[r_q^{(l)}=g'(a_q^{(l)})\sum_{j=1}^{h_{l+1}}w_{jq}^{(l+1)}r_j^{(l+1)}\]
+
+\paragraph{Update rule}
+
+\[\Delta \mathbf w_k = \mathbf w_{K+1}-\mathbf w_k\]
+\[\Delta \mathbf w_k = -\nu(1-\mu)\nabla_{\textbf w_k}E+\mu \Delta \mathbf w_{k-1}\]
+
+$\nu$ = learning rate, $\mu$ = momentum term
+
 \section{Decision Theory}
 \paragraph{Risk / Error}
 \[ R(f) = \E \left [ L(f(\mathbf x), t) \right ] \]
