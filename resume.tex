@@ -71,15 +71,19 @@ Stochastic $\mathbf{w}_{k+1} = \mathbf{w}_k - \eta \nabla_{\mathbf w}E_i(\mathbf
 \[z_q^{(l)}=g(a_q^{(l)})\text{, }q=1,..,h_l\]
 
 \paragraph{Backward pass}
-\[r^{(l)}=\frac{\partial E_i}{\partial a^{(l)}}\]
+\[r^{(L)}=\frac{\partial E_i}{\partial a^{(L)}} = \left\{ \begin{array}{ll}a^L - t_i & for~ E_{sq}  \\ \sigma(a^L) - \tilde{t_i} & for~ E_{log} \end{array} \right. \]
 \[r_q^{(l)}=g'(a_q^{(l)})\sum_{j=1}^{h_{l+1}}w_{jq}^{(l+1)}r_j^{(l+1)}\]
 
-\paragraph{Update rule}
+\paragraph{Gradient computation}
+\[\nabla_{w^{(l)}} E_i = r^{(l+1)} \mathbf{z}^{(l)} ~,~\nabla_{w_q^{(1)}} E_i = r_q^{(1)} \mathbf{x}\]
+Wrt b: set $\mathbf{x} = 1$, residual for output layer
 
-\[\Delta \mathbf w_k = \mathbf w_{K+1}-\mathbf w_k\]
-\[\Delta \mathbf w_k = -\nu(1-\mu)\nabla_{\textbf w_k}E+\mu \Delta \mathbf w_{k-1}\]
+\paragraph{Momentum learning}
 
-$\nu$ = learning rate, $\mu$ = momentum term
+\[\Delta \mathbf w_k = \mathbf w_{k+1}-\mathbf w_k\]
+\[\Delta \mathbf w_k = -\eta(1-\mu)\nabla_{\textbf w_k}E+\mu \Delta \mathbf w_{k-1}\]
+
+$\eta$ = learning rate e.g. $1/k$, $\mu$ = momentum term
 
 \section{Linear Regression. Least Squares Estimation}
 
@@ -114,9 +118,9 @@ $$Cov[\mathbf A \mathbf x] = \mathbf A Cov[\mathbf x] \mathbf A^T$$
 Cauchy-Schwarz: $|\mathbf a ^T \mathbf b|\leq \| \mathbf a \| \| \mathbf b \|$
 \paragraph{Logistic function}
 $$\sigma(v) = \frac{1}{1+e^{-v}}$$
-$$\sigma'(v) = \sigma(v)-\sigma(1-v)$$
+$$\sigma'(v) = \sigma(v)\sigma(-v) = \sigma(v)(1-\sigma(v))$$
 \paragraph{tanh}
-$$g(a)=\tanh(a)=\frac{e^a-e^{-a}}{e^a + a^{-a}}$$
+$$g(a)=\tanh(a)=\frac{e^a-e^{-a}}{e^a + e^{-a}}$$
 $$g(a)'=1 - g(a)^2$$
 %\appendix{Lagrange Multipliers and Lagrangian Duality}
 \end{multicols}
