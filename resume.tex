@@ -1,4 +1,4 @@
-\documentclass[9pt]{scrartcl}
+\documentclass[7pt]{scrartcl}
 \usepackage[a5paper,landscape,margin=20pt]{geometry}
 
 \usepackage{amsmath}
@@ -29,11 +29,16 @@
 \DeclareMathOperator*{\argmin}{argmin}
 \DeclareMathOperator{\E}{E}
 
+%Section numbering
+\setcounter{secnumdepth}{1}
+\setcounter{section}{1}
+
 \pagestyle{empty} 
 
 \begin{document}
 \begin{multicols}{4}
-\section{Perceptron Alg.}
+\section{Linear Classification}
+\subsection{Perceptron Alg.}
 Terminates after no more than $1/\gamma^2$ updates, where 
 $\gamma = \min_{i=1,\dots,n} t_i\mathbf{w}_*^T\mathbf{\tilde
 \Phi}_i$
@@ -41,7 +46,7 @@ $\gamma = \min_{i=1,\dots,n} t_i\mathbf{w}_*^T\mathbf{\tilde
 Update rule (when misclassified): $\mathbf{w} \leftarrow \mathbf{w} +
 t_i\mathbf{\phi_i}$
 
-\section{Gradient Descent}
+\subsection{Gradient Descent}
 $\mathbf{w}_{k+1} = \mathbf{w}_k + \eta E_{\nabla \mathbf w}(\mathbf{w}_k)$
 
 \paragraph{Least square estimation}
@@ -73,6 +78,8 @@ t)
 
 $\nu$ = learning rate, $\mu$ = momentum term
 
+\section{Linear Regression. Least Squares Estimation}
+
 \section{Decision Theory}
 \paragraph{Risk / Error}
 \[ R(f) = \E \left [ L(f(\mathbf x), t) \right ] \]
@@ -87,5 +94,13 @@ f^*(\mathbf x) &= \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) \\
 \paragraph{Bayes Error}
 \begin{equation*} 1 - \E \left [ \max_{k\in\tau} P(t = k | \mathbf x) \right ] \end{equation*}
 
+\section{Probabilistic Models. Maximum Likelihood}
+\section{Generalization. Regularization}
+\section{Conditional Likelihood. Logistic Regression}
+\section{Support Vector Machines}
+\section{Model Selection and Evaluation}
+\section{Dimensionality Reduction}
+\section{Unsupervised Learning}
+%\appendix{Lagrange Multipliers and Lagrangian Duality}
 \end{multicols}
 \end{document}
