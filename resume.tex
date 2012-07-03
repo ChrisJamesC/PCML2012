@@ -35,6 +35,7 @@
 
 \pagestyle{empty} 
 
+
 \begin{document}
 \begin{multicols}{4}
 \section{Linear Classification}
@@ -55,6 +56,7 @@ $\mathbf{w}_{k+1} = \mathbf{w}_k + \eta E_{\nabla \mathbf w}(\mathbf{w}_k)$
 \end{flalign*}
 
 \paragraph{Gradient for Squared Error}
+(yields normal equation for least squares!)
 \begin{align*} \nabla_{\mathbf w}E&= \sum_{i=1}^n\frac{\partial E}{\partial y_i}
 \nabla_{\mathbf w}y_i \\
 &= \mathbf\Phi^T(\mathbf \Phi \mathbf w - \mathbf
@@ -95,12 +97,26 @@ f^*(\mathbf x) &= \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) \\
 \begin{equation*} 1 - \E \left [ \max_{k\in\tau} P(t = k | \mathbf x) \right ] \end{equation*}
 
 \section{Probabilistic Models. Maximum Likelihood}
+\paragraph{Covariance}
+
+$$Cov(\mathbf x, \mathbf y) = \E[\mathbf x \mathbf y ^ T] - \E[\mathbf x]E[\mathbf y]$$
+$$Cov[\mathbf A \mathbf x] = \mathbf A Cov[\mathbf x] \mathbf A^T$$
+
+
 \section{Generalization. Regularization}
 \section{Conditional Likelihood. Logistic Regression}
 \section{Support Vector Machines}
 \section{Model Selection and Evaluation}
 \section{Dimensionality Reduction}
 \section{Unsupervised Learning}
+\section{Maths}
+Cauchy-Schwarz: $|\mathbf a ^T \mathbf b|\leq \| \mathbf a \| \| \mathbf b \|$
+\paragraph{Logistic function}
+$$\sigma(v) = \frac{1}{1+e^{-v}}$$
+$$\sigma'(v) = \sigma(v)-\sigma(1-v)$$
+\paragraph{tanh}
+$$g(a)=\tanh(a)=\frac{e^a-e^{-a}}{e^a + a^{-a}}$$
+$$g(a)'=1 - g(a)^2$$
 %\appendix{Lagrange Multipliers and Lagrangian Duality}
 \end{multicols}
 \end{document}
