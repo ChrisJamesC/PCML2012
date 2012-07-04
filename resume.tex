@@ -97,7 +97,7 @@ For b: keep residual only ! (i.e $\vec x = 1$)
 
 $\eta$ = learning rate e.g. $1/k$, $\mu$ = momentum term
 
-\section{Linear Regression. Least Squares Estimation}
+\section{Linear Reg. Least Squares Estim.}
 \paragraph{Univariate Linear Regression}
 $\langle x \rangle = n^{-1} \sum_i x_i $. Similar for $t, tx, x^2$
 \[y_i = wx_i + b \]
@@ -126,7 +126,7 @@ Opt. Classifier:
 \[f^*(\vec x) = \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) P(t = k | \vec x) \]
 \[ R^* = \E \left [ \min_{j\in\tau} \sum_{k \in \tau} L(j,k) P(t = k | \vec x) \right ] \]
 
-\section{Probabilistic Models. Maximum Likelihood}
+\section{Proba Models. Max Likelihood}
 \paragraph{MLE} $\hat{p}_1 = \argmax_{p_1 \in [0,1]}P(D|p_1)$ Maximize $logP(D|p_1) :  \frac{dlogP(D|p_1)}{dp_1} = 0$ or minimize $-logP(D|p_1)$
 \paragraph{Gaussian}
 \[N(x|\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]
@@ -165,7 +165,7 @@ $\rightarrow (\vec{\Phi}^T \vec{\Phi} + \nu \vec{I})\vec{w} = \vec{\Phi}^T \vec{
 \paragraph{MAP}
 $\hat{p_1} = \argmax_{p_1} p(p_1|D)$
 $= \argmax_{p_1} P(D|p_1)p(p_1)$
-\section{Conditional Likelihood. Logistic Regression}
+\section{Cond. Likelihood. Logistic Reg.}
 For $\sigma(v) = \frac{1}{1+e^{-v}}$ we have:
 \begin{align*}
  E_{log}(\vec w) &= - \log P(\vec t | \vec w)\\
