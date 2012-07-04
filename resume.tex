@@ -147,7 +147,7 @@ Sample Covariance
 \paragraph{ML plugin discriminant}
 \begin{equation*}
 \begin{split}
-\hat{y}(\vec{x}) = \hat{\vec{w}}^T \vec{x} - \frac{1}{2}(||\hat{\vec{\mu}}_{+1} ||^2 - \hat{\vec{\mu}}_{-1} ||^2) \\ + log\frac{\hat{\pi}_1}{1-\hat{\pi}_1} ~ where~ \hat{\pi}_1 = n_1 / n ~ and~  \\ \hat{\vec{w}}=\hat{\vec{\mu}}_{+1} - \hat{\vec{\mu}}_{-1}
+\hat{y}(\vec{x}) = \hat{\vec{w}}^T \vec{x} - \frac{1}{2}(||\hat{\vec{\mu}}_{+1} ||^2 - || \hat{\vec{\mu}}_{-1} ||^2) \\ + log\frac{\hat{\pi}_1}{1-\hat{\pi}_1} ~ where~ \hat{\pi}_1 = n_1 / n ~ and~  \\ \hat{\vec{w}}=\hat{\vec{\mu}}_{+1} - \hat{\vec{\mu}}_{-1}
 \end{split}
 \end{equation*}
 Multiway \[y_k^*(\vec{x}) = -\frac{1}{2}||\vec{x}-\vec{\mu}_k||^2 + log~P(t=k) + C\]
@@ -157,6 +157,19 @@ Multiway \[y_k^*(\vec{x}) = -\frac{1}{2}||\vec{x}-\vec{\mu}_k||^2 + log~P(t=k) +
 )^{\phi_m(\vec x)} \]
 
 \section{Generalization. Regularization}
+Training error: \\
+$\hat{R}_n(f) = \frac{1}{n} \sum_{i=1}^n I_{\{(f(\vec{x_i}) \neq t_i\}}$ \\
+Generalization error: \\
+$R(f) = E^*[I_{\{(f(\vec{x}) \neq t\}}]$
+
+Tikhonov Regularization term $\frac{\nu}{2} ||\vec{w}||^2$
+$\rightarrow (\vec{\Phi}^T \vec{\Phi} + \nu \vec{I})\vec{w} = \vec{\Phi}^T \vec{t}$
+
+\paragraph{MAP}
+\begin{align*}
+\hat{p_1} = \argmax_{p_1} p(p1|D) \\
+= \argmax_{p_1} P(D|p_1)p(p_1)
+\end{align*}
 \section{Conditional Likelihood. Logistic Regression}
 For $\sigma(v) = \frac{1}{1+e^{-v}}$ we have:
 \begin{align*}
@@ -180,6 +193,9 @@ $$g(a)'=1 - g(a)^2$$
 \paragraph{Trace}
 \[ tr(\vec{A}) = \sum_{j=1}^{d}a_{jj} \]
 \[\vec{x}^T \vec{A} \vec{x} = tr(\vec{x}^T \vec{A} \vec{x}) = tr(\vec{A} \vec{xx}^T)\]
+\paragraph{Beta($\alpha,\beta)$}
+\[p(p_1|\alpha,\beta) = \frac{1}{B(\alpha,\beta)}(p_1)^{\alpha -1)}(1-p_1)^{\beta -1}\]
+With $B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$
 %\appendix{Lagrange Multipliers and Lagrangian Duality}
 \end{multicols}
 \end{document}
