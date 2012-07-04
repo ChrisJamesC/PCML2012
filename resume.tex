@@ -126,7 +126,7 @@ Opt. Classifier:
 \[f^*(\vec x) = \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) P(t = k | \vec x) \]
 \[ R^* = \E \left [ \min_{j\in\tau} \sum_{k \in \tau} L(j,k) P(t = k | \vec x) \right ] \]
 
-\section{Probabilistic Models. Maximum Likelihood}
+\section{Probab. Models. Max. Likelihood}
 \paragraph{MLE} $\hat{p}_1 = \argmax_{p_1 \in [0,1]}P(D|p_1)$ Maximize $logP(D|p_1) :  \frac{dlogP(D|p_1)}{dp_1} = 0$ or minimize $-logP(D|p_1)$
 \paragraph{Gaussian}
 \[N(x|\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]
@@ -237,7 +237,8 @@ E[(\hat{y}(\vec{x}|D) - E[t|x])^2|\vec x] = \\ \underbrace{(E[\hat{y}(\vec{x}|D)
 $\vec{z = U^T x} ~with~ U^TU=I_{M \times M}$
 \[\vec{u}_* = \argmax_{\vec{u}:||\vec{u}||=1} \vec{u}^T Cov(\vec{x}) \vec{u}\]
 PC directions = eigendirections of $Cov(\vec{x})$
-\textbf{Goals}:maximize $Cov(z)$ / Minimize $E[||\hat{x}-x||^2]$ / decorrelate components of $\vec{z}$ 
+\textbf{Goals}:maximize $Cov(z)$ / Minimize $E[||\hat{x}-x||^2]$ / decorrelate components of $\vec{z}$ \\
+! PCA doesn't depends on labels t !
 \paragraph{Fischer}
 \[J(\vec{u}) = \frac{(m_1 - m_0)^2}{s_0^2 + s_1^2} = \frac{\vec{u}^T S_B \vec{u}}{\vec{u}^T S_W \vec{u}}\]
 with $m_k = \vec{\mu}^T \vec{\mu}_k$. Maximize ratio!
