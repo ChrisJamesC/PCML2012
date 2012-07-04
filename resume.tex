@@ -108,14 +108,13 @@ $\langle x \rangle = n^{-1} \sum_i x_i $. Similar for $t, tx, x^2$
 
 \section{Probability. Decision Theory}
 \paragraph{Probability}
-\[\]
+$E[X] = E[E[X|Y]]$ \\
 Sum rule: $P(X) = \sum_Y P(X,Y)$\\
 Product rule: $P(X,Y) = P(X|Y)P(Y)$
-Bayes  \[P(B|F) = \frac{P(F|B)P(B)}{P(F)}\]
-\[E[X] = E[E[X|Y]]\]
-\[Var(t) = E[Var(t|x)] + Var(E[t|x]) \]
+Bayes $P(B|F) = \frac{P(F|B)P(B)}{P(F)}$ \\
+$Var(t) = E[Var(t|x)] + Var(E[t|x])$
 \paragraph{Risk / Error}
-\[ R(f) = \E \left [ L(f(\vec x), t) \right ] \]
+$ R(f) = \E \left [ L(f(\vec x), t) \right ]$
 
 \paragraph{Bayes-Optimal Classifier}
 \begin{align*}
@@ -168,7 +167,7 @@ $\rightarrow (\vec{\Phi}^T \vec{\Phi} + \nu \vec{I})\vec{w} = \vec{\Phi}^T \vec{
 
 \paragraph{MAP}
 \begin{align*}
-\hat{p_1} = \argmax_{p_1} p(p1|D) \\
+\hat{p_1} = \argmax_{p_1} p(p_1|D) \\
 = \argmax_{p_1} P(D|p_1)p(p_1)
 \end{align*}
 \section{Conditional Likelihood. Logistic Regression}
@@ -269,23 +268,27 @@ E(\vec{\theta};\{Q_i\}) = \sum_{i=1}^n E_i(\vec{\theta};Q_i) \\= \sum_{i=1}^n E_
 \section{Maths} 
 Cauchy-Schwarz: $|\vec a ^T \vec b|\leq \| \vec a \| \| \vec b \|$
 \paragraph{Logistic function}
-$$\sigma(v) = \frac{1}{1+e^{-v}}$$
+$\sigma(v) = \frac{1}{1+e^{-v}}$
 $$\sigma'(v) = \sigma(v)\sigma(-v) = \sigma(v)(1-\sigma(v))$$
 \paragraph{tanh}
-$$g(a)=\tanh(a)=\frac{e^a-e^{-a}}{e^a + e^{-a}}$$
+$g(a)=\tanh(a)=\frac{e^a-e^{-a}}{e^a + e^{-a}}$
 $$g(a)'=1 - g(a)^2$$
 \paragraph{Trace}
-$tr(\vec{A}) = \sum_{j=1}^{d}a_{jj}$
+$tr(\vec{A}) = \sum_{j=1}^{d}a_{jj} = \sum_{j=1}^d \lambda_j$
 \[\vec{x}^T \vec{A} \vec{x} = tr(\vec{x}^T \vec{A} \vec{x}) = tr(\vec{A} \vec{xx}^T)\]
+\paragraph{Eigs}
+$\vec{Av} = \lambda \vec{v}, ~\vec{A} = \vec{U \Lambda U}$\\
+$|A| = \prod_{j=1}^d \lambda_j$
 \paragraph{Beta($\alpha,\beta)$}
-\[p(p_1|\alpha,\beta) = \frac{1}{B(\alpha,\beta)}(p_1)^{\alpha -1)}(1-p_1)^{\beta -1}\]
+\[p(p_1|\alpha,\beta) = \frac{1}{B(\alpha,\beta)}(p_1)^{\alpha-1}(1-p_1)^{\beta -1}\]
 With $B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$
 \paragraph{Hinge function}
 $[x]_+ = max(x,0)$
 \paragraph{Cross-entropy, divergence}
 \[D(\vec{q}||\vec{p}) = \sum_{l=1}^L q_l log(\frac{q_l}{p_l}) \geq 0\]
 %\appendix{Lagrange Multipliers and Lagrangian Duality}
-\line(1,0){100} \\
-Cheat sheet kindly written by Christopher Chiche, Alex Chap, Tobias Schlatter, FSavoy, EPFL 2012
+\line(1,0){140} \\
+\tiny
+PCML2012 Cheat sheet kindly written by Christopher Chiche, Alex Chap, Tobias Schlatter, FSavoy, Copyleft EPFL 2012 
 \end{multicols}
 \end{document}
