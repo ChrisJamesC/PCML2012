@@ -137,12 +137,13 @@ Multivariate $N(\vec{x}|\vec{\mu},\vec{\Sigma}) =$
 \[|2\pi\vec{\Sigma}|^{-1/2} e^{-\frac{1}{2}(\vec{x}-\vec{\mu})^T\vec{\Sigma}^{-1}(\vec{x}-\vec{\mu})}\]
 
 \paragraph{Correlation}
-\[\frac{Cov(x_j,x_k)}{\sqrt{Var(x_j)Var(x_k)}}\]
+\[\frac{Cov(x_j,x_k)}{\sqrt{Var(x_j)Var(x_k)}} \in [-1,1]\]
 
 \paragraph{Covariance}
 $$Cov(\vec x, \vec y) = \E[\vec x \vec y ^ T] - \E[\vec x]E[\vec y]$$
 $$Cov[\vec A \vec x] = \vec A Cov[\vec x] \vec A^T$$
-
+Sample Covariance 
+\[\vec{S} = \frac{1}{n} \sum_{i=1}^n (\vec{x_i - \bar{x}})(\vec{x_i - \bar{x}})^T\]
 \paragraph{ML plugin discriminant}
 \begin{equation*}
 \begin{split}
@@ -176,6 +177,9 @@ $$\sigma'(v) = \sigma(v)\sigma(-v) = \sigma(v)(1-\sigma(v))$$
 \paragraph{tanh}
 $$g(a)=\tanh(a)=\frac{e^a-e^{-a}}{e^a + e^{-a}}$$
 $$g(a)'=1 - g(a)^2$$
+\paragraph{Trace}
+\[ tr(\vec{A}) = \sum_{j=1}^{d}a_{jj} \]
+\[\vec{x}^T \vec{A} \vec{x} = tr(\vec{x}^T \vec{A} \vec{x}) = tr(\vec{A} \vec{xx}^T)\]
 %\appendix{Lagrange Multipliers and Lagrangian Duality}
 \end{multicols}
 \end{document}
