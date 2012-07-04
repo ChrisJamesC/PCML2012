@@ -233,7 +233,7 @@ E[(\hat{y}(\vec{x}|D) - E[t|x])^2|x] = \\ \underbrace{(E[\hat{y}(\vec{x}|D)|\vec
 \[\vec{z = U^T x}\]
 \[\vec{u}_* = \argmax_{\vec{u}:||\vec{u}||=1} \vec{u}^T Cov(\vec{x}) \vec{u}\]
 PC directions = eigendirections of $Cov(\vec{x})$
-% If enough space at the end, add the three goals of PCA -> p.187 notes
+% TODO: If enough space at the end, add the three goals of PCA -> p.187 notes
 \paragraph{Fischer}
 \[J(\vec{u}) = \frac{(m_1 - m_0)^2}{s_0^2 + s_1^2} = \frac{\vec{u}^T S_B \vec{u}}{\vec{u}^T S_W \vec{u}}\]
 with $m_k = \vec{\mu}^T \vec{\mu}_k$. Maximize ratio!
@@ -243,8 +243,26 @@ with $m_k = \vec{\mu}^T \vec{\mu}_k$. Maximize ratio!
 \paragraph{LDA}
 Generalization for multiple classes
 \[\max_{U \in \Re^{d \times M}} tr(U^T S_B U) ~s.t.~ U^T S_WU = I\]
+
 \section{Unsupervised Learning}
-\section{Maths}
+\paragraph{Kmeans}
+Iterate until assignment no longer change.\\
+Assignment step: \\
+\[||\vec{x_i} - \mu_{t_i}|| = \min_{k=1..K} || \vec{x_i} - \mu_{k}||\]
+Update prototypes: \\
+\[\mu_k = n_k^{-1} \sum_{i=1}^n I_{\{t_i=k\}}\vec{x_i}\]
+\[\phi(\vec{t,\mu}) = \sum_{i=1}^n\sum_{k=1}^K I_{\{t_i=k\}} || \vec{x_i} - \vec{\mu_k} || ^2\]
+\paragraph{Gaussian Mixture Model}
+\begin{align*}
+p(\vec{x}) = \sum_{k=1}^K p(\vec{x}|t=k) P(t=k) \\
+=  \sum_{k=1}^K N(\vec{x}|\vec{\mu_k},\Sigma_k)P(t=k)
+\end{align*}
+Update $\pi_k = \frac{n_k}{n}, n_k = \sum_{i=1}^nP(t_i=k|\vec{x_i})$
+
+\paragraph{Expectation Maximisation}
+todo
+
+\section{Maths} 
 Cauchy-Schwarz: $|\vec a ^T \vec b|\leq \| \vec a \| \| \vec b \|$
 \paragraph{Logistic function}
 $$\sigma(v) = \frac{1}{1+e^{-v}}$$
