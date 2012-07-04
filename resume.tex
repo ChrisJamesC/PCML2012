@@ -51,6 +51,7 @@
 \begin{multicols}{4}
 \section{Linear Classification}
 \subsection{Perceptron Alg.}
+! Work for linearly separable D !
 Terminates after no more than $1/\gamma^2$ updates, where 
 
 $\gamma = \min_{i=1,\dots,n} t_i\vec{w}_*^T\vec{\tilde
@@ -88,7 +89,7 @@ Stochastic $\vec{w}_{k+1} = \vec{w}_k - \eta \nabla_{\vec w}E_i(\vec{w}_k)$
 
 \paragraph{Gradient computation}
 \[\nabla_{w^{(l)}} E_i = r^{(l+1)} \vec{z}^{(l)} ~,~\nabla_{w_q^{(1)}} E_i = r_q^{(1)} \vec{x}\]
-Wrt b: set $\vec{x} = 1$, residual for output layer
+For b: keep residual only ! (i.e $\vec x = 1$)
 
 \paragraph{Momentum learning}
 \[\Delta \vec w_k = \vec w_{k+1}-\vec w_k\]
@@ -113,36 +114,32 @@ Sum rule: $P(X) = \sum_Y P(X,Y)$\\
 Product rule: $P(X,Y) = P(X|Y)P(Y)$
 Bayes $P(B|F) = \frac{P(F|B)P(B)}{P(F)}$ \\
 $Var(t) = E[Var(t|x)] + Var(E[t|x])$
-\paragraph{Risk / Error}
-$ R(f) = \E \left [ L(f(\vec x), t) \right ]$
-
 \paragraph{Bayes-Optimal Classifier}
-\begin{align*}
-f^*(\vec x) &= \argmax_{t \in \tau} P(t|\vec x) \\ 
-&= \argmax_{t \in \tau} p(\vec x|t) P(t) \\
-f^*(\vec x) &= \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) P(t = k | \vec x) \end{align*}
-
-\paragraph{Bayes Error}
+\[f^*(\vec x) = \argmax_{t \in \tau} \underbrace{P(t|\vec x)}_{p(\vec x|t) P(t)}\]
+Bayes error: $R = P\{f(x) \neq t\}$
 \[ R^* = R(f^*) = 1 - \E \left [ \max_{k\in\tau} P(t = k | \vec x) \right ] \]
-
-
-\paragraph{Discriminant}
+Optimal discriminant:
 \[y^*(x) = log \frac{p(\vec{x}|t=1)}{p(\vec{x}|t=0)} + log \frac{P(t=1)}{P(t=0)} > 0\]
-\section{Probabilistic Models. Maximum Likelihood}
+\paragraph{Bayes under Loss function}
+Risk: $ R(f) = \E \left [ L(f(\vec x), t) \right ]$
+Opt. Classifier:
+\[f^*(\vec x) = \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) P(t = k | \vec x) \]
+\[ R^* = \E \left [ \min_{j\in\tau} \sum_{k \in \tau} L(j,k) P(t = k | \vec x) \right ] \]
 
+\section{Probabilistic Models. Maximum Likelihood}
+\paragraph{MLE} $\hat{p}_1 = \argmax_{p_1 \in [0,1]}P(D|p_1)$ Maximize $logP(D|p_1) :  \frac{dlogP(D|p_1)}{dp_1} = 0$ or minimize $-logP(D|p_1)$
 \paragraph{Gaussian}
 \[N(x|\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]
 Multivariate $N(\vec{x}|\vec{\mu},\vec{\Sigma}) =$
 \[|2\pi\vec{\Sigma}|^{-1/2} e^{-\frac{1}{2}(\vec{x}-\vec{\mu})^T\vec{\Sigma}^{-1}(\vec{x}-\vec{\mu})}\]
-
-\paragraph{Correlation}
-\[\frac{Cov(x_j,x_k)}{\sqrt{Var(x_j)Var(x_k)}} \in [-1,1]\]
-
 \paragraph{Covariance}
 $$Cov(\vec x, \vec y) = \E[\vec x \vec y ^ T] - \E[\vec x]E[\vec y]$$
 $$Cov[\vec A \vec x] = \vec A Cov[\vec x] \vec A^T$$
 Sample Covariance 
 \[\vec{S} = \frac{1}{n} \sum_{i=1}^n (\vec{x_i - \bar{x}})(\vec{x_i - \bar{x}})^T\]
+\paragraph{Correlation}
+\[\frac{Cov(x_j,x_k)}{\sqrt{Var(x_j)Var(x_k)}} \in [-1,1]\]
+
 \paragraph{ML plugin discriminant}
 \begin{equation*}
 \begin{split}
@@ -277,9 +274,12 @@ $tr(\vec{A}) = \sum_{j=1}^{d}a_{jj} = \sum_{j=1}^d \lambda_j$
 \paragraph{Eigs}
 $\vec{Av} = \lambda \vec{v}, ~\vec{A} = \vec{U \Lambda U}$\\
 $|A| = \prod_{j=1}^d \lambda_j$
+\paragraph{Positive definite matrix} $\vec A \in \Re^ {d\times d}$ symmetric:
+$\vec v^T \vec A \vec v \geq 0 ~ \forall \vec v \in \Re^d$
 \paragraph{Beta($\alpha,\beta)$}
 \[p(p_1|\alpha,\beta) = \frac{1}{B(\alpha,\beta)}(p_1)^{\alpha-1}(1-p_1)^{\beta -1}\]
-With $B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$
+With $B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$.
+Mode $\frac{\alpha - 1}{\alpha + \beta - 2}$
 \paragraph{Hinge function}
 $[x]_+ = max(x,0)$
 \paragraph{Cross-entropy, divergence}
