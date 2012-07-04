@@ -50,7 +50,7 @@
 \begin{document}
 \begin{multicols}{4}
 \section{Linear Classification}
-\subsection{Perceptron Alg.}
+\paragraph{Perceptron Alg.}
 Terminates after no more than $1/\gamma^2$ updates, where 
 
 $\gamma = \min_{i=1,\dots,n} t_i\vec{w}_*^T\vec{\tilde
@@ -61,7 +61,7 @@ Normalize features $\phi_i \rightarrow \tilde{\phi_i}$  !
 Update rule (when misclassified $t_i\vec{w}^{T} \vec {\tilde{\phi_i}} \leq 0$): \[\vec{w} \leftarrow \vec{w} +
 t_i\vec{\tilde{\phi_i}}\]
 
-\subsection{Gradient Descent}
+\paragraph{Gradient Descent}
 Stochastic $\vec{w}_{k+1} = \vec{w}_k - \eta \nabla_{\vec w}E_i(\vec{w}_k)$
 
 \paragraph{Least square estimation}
