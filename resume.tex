@@ -183,6 +183,9 @@ For $\sigma(v) = \frac{1}{1+e^{-v}}$ we have:
 \[max_{\theta} \prod_{i=1}^n p(\vec{x_i},t_i|\vec{\theta})\]
 \paragraph{Discriminative Modeling}
 \[P(t|\vec{x,\theta}) \rightarrow max_\theta \prod_{i=1}^n P(t_i|\vec{x_i,\theta)}\]
+\paragraph{Multiway}
+\[P(t=k|\vec{x}) = \frac{e^{y_k^*(\vec{x})}}{\sum_{\tilde{k}}e^{y_{\tilde{k}}^*(\vec{x})}} = \sigma_k(\vec{y}^*(\vec{x))}\]
+Soft-max mapping $\sigma_k(\vec{\nu}) = e^{\nu_k - lsexp(\vec{\nu})}$ with $lsexp(\vec{\nu}) = log \sum_{\tilde{k}}e^{\vec{\nu_{\tilde{k}}}} $
 \section{Support Vector Machines}
 Kernel function: $K(\vec x, \vec x') = \phi(\vec x)^T\phi(\vec x')$
 \section{Model Selection and Evaluation}
