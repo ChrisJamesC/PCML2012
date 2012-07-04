@@ -155,6 +155,7 @@ Multiway \[y_k^*(\vec{x}) = -\frac{1}{2}||\vec{x}-\vec{\mu}_k||^2 + log~P(t=k) +
 \paragraph{Naive Bayes Classifier}
 \[ P(\vec x | N,t=k) = \prod_{m=1}^M \left ( p_m^{(k)} \right
 )^{\phi_m(\vec x)} \]
+with $\phi_m(\vec x) = \sum_{j=1}^N I_{\{x_j = m\}}$
 
 \section{Generalization. Regularization}
 Training error: \\
@@ -177,6 +178,11 @@ For $\sigma(v) = \frac{1}{1+e^{-v}}$ we have:
  &= \sum\nolimits_{i=1}^n \log \left (1 + e^{-t_iy_i} \right)\\
  &= \sum\nolimits_{i=1}^n -\log \sigma (t_iy_i)
 \end{align*}
+\paragraph{Generative Modeling}
+\[p(\vec{x},t|\vec{\theta}) = p(\vec{x}|t,\vec{\theta})P(t|\vec{\theta}) \]
+\[max_{\theta} \prod_{i=1}^n p(\vec{x_i},t_i|\vec{\theta})\]
+\paragraph{Discriminative Modeling}
+\[P(t|\vec{x,\theta}) \rightarrow max_\theta \prod_{i=1}^n P(t_i|\vec{x_i,\theta)}\]
 \section{Support Vector Machines}
 Kernel function: $K(\vec x, \vec x') = \phi(\vec x)^T\phi(\vec x')$
 \section{Model Selection and Evaluation}
@@ -190,12 +196,14 @@ $$\sigma'(v) = \sigma(v)\sigma(-v) = \sigma(v)(1-\sigma(v))$$
 \paragraph{tanh}
 $$g(a)=\tanh(a)=\frac{e^a-e^{-a}}{e^a + e^{-a}}$$
 $$g(a)'=1 - g(a)^2$$
-\paragraph{Trace} 
+\paragraph{Trace}
 \[ tr(\vec{A}) = \sum_{j=1}^{d}a_{jj} \]
 \[\vec{x}^T \vec{A} \vec{x} = tr(\vec{x}^T \vec{A} \vec{x}) = tr(\vec{A} \vec{xx}^T)\]
 \paragraph{Beta($\alpha,\beta)$}
 \[p(p_1|\alpha,\beta) = \frac{1}{B(\alpha,\beta)}(p_1)^{\alpha -1)}(1-p_1)^{\beta -1}\]
 With $B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$
+\paragraph{Cross-entropy, divergence}
+\[D(\vec{q}||\vec{p}) = \sum_{l=1}^L q_l log(\frac{q_l}{p_l}) \geq 0\]
 %\appendix{Lagrange Multipliers and Lagrangian Duality}
 \end{multicols}
 \end{document}
