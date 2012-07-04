@@ -235,7 +235,8 @@ E[(\hat{y}(\vec{x}|D) - E[t|x])^2|x] = \\ \underbrace{(E[\hat{y}(\vec{x}|D)|\vec
 PC directions = eigendirections of $Cov(\vec{x})$
 % If enough space at the end, add the three goals of PCA -> p.187 notes
 \paragraph{Fischer}
-\[\max J(\vec{u}) = \frac{(m_1 - m_0)^2}{s_0^2 + s_1^2} = \frac{\vec{u}^T S_B \vec{u}}{\vec{u}^T S_W \vec{u}}\]
+\[J(\vec{u}) = \frac{(m_1 - m_0)^2}{s_0^2 + s_1^2} = \frac{\vec{u}^T S_B \vec{u}}{\vec{u}^T S_W \vec{u}}\]
+with $m_k = \vec{\mu}^T \vec{\mu}_k$. Maximize ratio!
 \[S_B = (\hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0)(\hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0)^T\]
 \[S_W = n^{-1} \sum_{i=1}^n(\vec{x_i} - \vec{\hat{\mu}_{t_i}})(\vec{x_i} - \vec{\hat{\mu}_{t_i}})^T\]
 \[\vec{\hat{\mu}}_{FLD} = \frac{S_W^{-1} \vec{d}}{||S_W^{-1} \vec{d}||}, ~ \vec{d} = \hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0\]
