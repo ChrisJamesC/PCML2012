@@ -25,12 +25,12 @@
 \setlength{\parskip}{0em plus 0.2em minus 0.2em}%plus 0.1ex minus 0.2ex}
 
 \newlength{\secskip}
-\setlength{\secskip}{0.8\baselineskip}
+\setlength{\secskip}{0.5\baselineskip}
 \renewcommand{\section}[1]{
   \vspace{\secskip}
-  \hrule\vspace{.4em}
+  \hrule\vspace{.3em}
   \textbf{#1}
-  \vspace{.4em}
+  \vspace{.3em}
   \hrule
   \vspace{\secskip}
 }
@@ -259,8 +259,12 @@ p(\vec{x}) = \sum_{k=1}^K p(\vec{x}|t=k) P(t=k) \\
 \end{align*}
 Update $\pi_k = \frac{n_k}{n}, n_k = \sum_{i=1}^nP(t_i=k|\vec{x_i})$
 
-\paragraph{Expectation Maximisation}
-todo
+\paragraph{Expectation Maximization}
+E-step: $Q_i(\vec{h_i}) \leftarrow P(\vec{h_i}|\vec{x_i},\vec{\theta)}$
+M-step: maximize surrogate criterion
+\begin{align*}
+E(\vec{\theta};\{Q_i\}) = \sum_{i=1}^n E_i(\vec{\theta};Q_i) \\= \sum_{i=1}^n E_{Q_i} [logP(\vec{x_i},\vec{h_i}|\vec{\theta})]
+\end{align*}
 
 \section{Maths} 
 Cauchy-Schwarz: $|\vec a ^T \vec b|\leq \| \vec a \| \| \vec b \|$
