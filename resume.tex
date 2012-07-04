@@ -157,6 +157,12 @@ Multiway \[y_k^*(\vec{x}) = -\frac{1}{2}||\vec{x}-\vec{\mu}_k||^2 + log~P(t=k) +
 
 \section{Generalization. Regularization}
 \section{Conditional Likelihood. Logistic Regression}
+For $\sigma(v) = \frac{1}{1+e^{-v}}$ we have:
+\begin{align*}
+ E_{log}(\vec w) &= - \log P(\vec t | \vec w)\\
+ &= \sum\nolimits_{i=1}^n \log \left (1 + e^{-t_iy_i} \right)\\
+ &= \sum\nolimits_{i=1}^n -\log \sigma (t_iy_i)
+\end{align*}
 \section{Support Vector Machines}
 \section{Model Selection and Evaluation}
 \section{Dimensionality Reduction}
