@@ -97,7 +97,7 @@ For b: keep residual only ! (i.e $\vec x = 1$)
 
 $\eta$ = learning rate e.g. $1/k$, $\mu$ = momentum term
 
-\section{Linear Regression. Least Squares Estimation}
+\section{Linear Regression. LSE}
 \paragraph{Univariate Linear Regression}
 $\langle x \rangle = n^{-1} \sum_i x_i $. Similar for $t, tx, x^2$
 \[y_i = wx_i + b \]
@@ -165,7 +165,7 @@ $\rightarrow (\vec{\Phi}^T \vec{\Phi} + \nu \vec{I})\vec{w} = \vec{\Phi}^T \vec{
 \paragraph{MAP}
 $\hat{p_1} = \argmax_{p_1} p(p_1|D)$
 $= \argmax_{p_1} P(D|p_1)p(p_1)$
-\section{Conditional Likelihood. Logistic Regression}
+\section{Cond. Likelihood. Logistic Reg.}
 Maximize Conditional Likelihood $p(\vec t|\vec w) = \prod_{i=1}^n p(t_i|y_i)$
 \paragraph{Conditional Likelihood Bridge}
 Likelihood $p(\vec t|\vec \theta) \overbrace{\longrightarrow}^ {-log} E(t,\theta)$ Loss function
@@ -242,11 +242,12 @@ PC directions = eigendirections of $Cov(\vec{x})$
 \paragraph{Fischer}
 \[J(\vec{u}) = \frac{(m_1 - m_0)^2}{s_0^2 + s_1^2} = \frac{\vec{u}^T S_B \vec{u}}{\vec{u}^T S_W \vec{u}}\]
 with $m_k = \vec{\mu}^T \vec{\mu}_k$. Maximize ratio!
-\[S_B = (\hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0)(\hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0)^T\]
+\[S_B = (\hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0)(\hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0)^T = \vec d \vec d^T\]
 \[S_W = n^{-1} \sum_{i=1}^n(\vec{x_i} - \vec{\hat{\mu}_{t_i}})(\vec{x_i} - \vec{\hat{\mu}_{t_i}})^T\]
 \[\vec{\hat{\mu}}_{FLD} = \frac{S_W^{-1} \vec{d}}{||S_W^{-1} \vec{d}||}, ~ \vec{d} = \hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0\]
+Total variance $S=S_W + \alpha(1-\alpha)\vec d \vec d^T$\\with $ \alpha = \frac{n_1}{n}$
 \paragraph{LDA}
-Generalization for multiple classes
+Generalization for multiple classes: $S=S_W+S_B$, $S_B = n^{-1}\sum_k n_k \vec d_k\vec d_k^T, ~ \vec d_k = \vec {\hat{\mu}}_k - \vec{ \hat{\mu}}$
 \[\max_{U \in \Re^{d \times M}} tr(U^T S_B U) ~s.t.~ U^T S_WU = I\]
 
 \section{Unsupervised Learning}
