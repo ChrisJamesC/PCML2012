@@ -227,7 +227,21 @@ E[(\hat{y}(\vec{x}|D) - E[t|x])^2|x] = \\ \underbrace{(E[\hat{y}(\vec{x}|D)|\vec
 \[\hat{y}_{ens}(\vec{x}) = \frac{1}{L} \sum_{l=1}^L \hat{y}_l(\vec{x})\]
 \paragraph{Crossvalidation}
 \[\hat{R}_{CV}^{(M)}(D) = \frac{1}{n}\sum_{i=1}^n L(\hat{y}_\nu^{-m(i)},t_i)\]
+
 \section{Dimensionality Reduction}
+\paragraph{PCA}
+\[\vec{z = U^T x}\]
+\[\vec{u}_* = \argmax_{\vec{u}:||\vec{u}||=1} \vec{u}^T Cov(\vec{x}) \vec{u}\]
+PC directions = eigendirections of $Cov(\vec{x})$
+% If enough space at the end, add the three goals of PCA -> p.187 notes
+\paragraph{Fischer}
+\[\max J(\vec{u}) = \frac{(m_1 - m_0)^2}{s_0^2 + s_1^2} = \frac{\vec{u}^T S_B \vec{u}}{\vec{u}^T S_W \vec{u}}\]
+\[S_B = (\hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0)(\hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0)^T\]
+\[S_W = n^{-1} \sum_{i=1}^n(\vec{x_i} - \vec{\hat{\mu}_{t_i}})(\vec{x_i} - \vec{\hat{\mu}_{t_i}})^T\]
+\[\vec{\hat{\mu}}_{FLD} = \frac{S_W^{-1} \vec{d}}{||S_W^{-1} \vec{d}||}, ~ \vec{d} = \hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0\]
+\paragraph{LDA}
+Generalization for multiple classes
+\[\max_{U \in \Re^{d \times M}} tr(U^T S_B U) ~s.t.~ U^T S_WU = I\]
 \section{Unsupervised Learning}
 \section{Maths}
 Cauchy-Schwarz: $|\vec a ^T \vec b|\leq \| \vec a \| \| \vec b \|$
