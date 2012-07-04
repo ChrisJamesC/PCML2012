@@ -49,8 +49,9 @@
 
 \begin{document}
 \begin{multicols}{4}
+Don't panic! All the best for the exam!
 \section{Linear Classification}
-\subsection{Perceptron Alg.}
+\paragraph{Perceptron Alg.}
 ! Work for linearly separable D !
 Terminates after no more than $1/\gamma^2$ updates, where 
 
@@ -62,8 +63,8 @@ Normalize features $\phi_i \rightarrow \tilde{\phi_i}$  !
 Update rule (when misclassified $t_i\vec{w}^{T} \vec {\tilde{\phi_i}} \leq 0$): $\vec{w} \leftarrow \vec{w} +
 t_i\vec{\tilde{\phi_i}}$
 
-\subsection{Gradient Descent}
-Stochastic $\vec{w}_{k+1} = \vec{w}_k - \eta \nabla_{\vec w}E_i(\vec{w}_k)$
+\paragraph{Stochastic Gradient Descent}
+$\vec{w}_{k+1} = \vec{w}_k - \eta \nabla_{\vec w}E_i(\vec{w}_k)$
 
 \paragraph{Least square estimation}
 \begin{flalign*} E(\vec w) &= \frac12 \sum_{i=1}^n(y(\vec x_i)-t_i)^2 \hfill \\ 
@@ -227,10 +228,10 @@ $b = \frac{1}{|S|} \sum_{i \in S} (t_i - \tilde{y}_i)$, S = essential support ve
 \begin{align*}
 E[(\hat{y}(\vec{x}|D) - E[t|x])^2|\vec x] = \\ \underbrace{(E[\hat{y}(\vec{x}|D)|\vec{x}] - E[t|\vec{x}])^2}_{Bias^2} + \underbrace{Var(\hat{y}(x|D) | \vec{x})}_{Variance}
 \end{align*}
-\paragraph{Ensemble methods}
-\[\hat{y}_{ens}(\vec{x}) = \frac{1}{L} \sum_{l=1}^L \hat{y}_l(\vec{x})\]
-\paragraph{Crossvalidation}
-\[\hat{R}_{CV}^{(M)}(D) = \frac{1}{n}\sum_{i=1}^n L(\hat{y}_\nu^{-m(i)},t_i)\]
+\textbf{Ens. meth.}
+$\hat{y}_{ens}(\vec{x}) = \frac{1}{L} \sum_{l=1}^L \hat{y}_l(\vec{x})$\\
+\textbf{CV}
+$\hat{R}_{CV}^{(M)}(D) = \frac{1}{n}\sum_{i=1}^n L(\hat{y}_\nu^{-m(i)},t_i)$
 
 \section{Dimensionality Reduction}
 \paragraph{PCA}
@@ -253,16 +254,16 @@ Generalization for multiple classes: $S=S_W+S_B$, $S_B = n^{-1}\sum_k n_k \vec d
 \section{Unsupervised Learning}
 \paragraph{Kmeans}
 Iterate until assignment no longer change. Assignment step: \\
-\[||\vec{x_i} - \mu_{t_i}|| = \min_{k=1..K} || \vec{x_i} - \mu_{k}||\]
-Update prototypes: \\
-\[\mu_k = n_k^{-1} \sum_{i=1}^n I_{\{t_i=k\}}\vec{x_i}\]
+$||\vec{x_i} - \mu_{t_i}|| = \min_{k=1..K} || \vec{x_i} - \mu_{k}||$\\
+Update prototypes:\\$\mu_k = n_k^{-1} \sum_{i=1}^n I_{\{t_i=k\}}\vec{x_i}$
 \[\phi(\vec{t,\mu}) = \sum_{i=1}^n\sum_{k=1}^K I_{\{t_i=k\}} || \vec{x_i} - \vec{\mu_k} || ^2\]
 \paragraph{Gaussian Mixture Model}
 \begin{align*}
 p(\vec{x}) = \sum_{k=1}^K p(\vec{x}|t=k) P(t=k) \\
 =  \sum_{k=1}^K N(\vec{x}|\vec{\mu_k},\Sigma_k)P(t=k)
 \end{align*}
-Update $\pi_k = \frac{n_k}{n}, n_k = \sum_{i=1}^nP(t_i=k|\vec{x_i})$
+Compute: $n_k = \sum_{i=1}^nP(t_i=k|\vec{x_i})$\\Update: $\pi_k = \frac{n_k}{n}$\\
+$\vec{\mu}_k = \frac{1}{n_k}\sum_{i=1}^nP(t_i=k|\vec{x_i})\vec{x_i}$
 
 \paragraph{Expectation Maximization}
 E-step: $Q_i(\vec{h_i}) \leftarrow P(\vec{h_i}|\vec{x_i},\vec{\theta)}$
@@ -270,8 +271,14 @@ M-step: maximize surrogate criterion
 \begin{align*}
 E(\vec{\theta};\{Q_i\}) = \sum_{i=1}^n E_i(\vec{\theta};Q_i) \\= \sum_{i=1}^n E_{Q_i} [logP(\vec{x_i},\vec{h_i}|\vec{\theta})]
 \end{align*}
-
-\section{Maths} 
+Perfect for missing data !
+Hint:
+\begin{align*}
+\frac{\partial logp(x_i)}{\partial h_k} = \frac{1}{p(x_i)}\frac{\partial p(x_i|h_k)P(h_k)}{\partial h_k} \\
+= \frac{p(x_i|h_k)P(h_k)}{p(x_i)}\frac{\partial logp(x_i|h_k)}{\partial h_k} \\
+= P(h_k|x_i) \frac{\partial logp(x_i|h_k)}{\partial h_k}
+\end{align*}
+\section{Beautiful Maths} 
 \paragraph{Cauchy-Schwarz}
  $|\vec a ^T \vec b|\leq \| \vec a \| \| \vec b \|$
 \paragraph{Logistic function}
