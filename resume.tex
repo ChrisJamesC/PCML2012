@@ -24,6 +24,17 @@
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{0em plus 0.2em minus 0.2em}%plus 0.1ex minus 0.2ex}
 
+\newlength{\secskip}
+\setlength{\secskip}{0.8\baselineskip}
+\renewcommand{\section}[1]{
+  \vspace{\secskip}
+  \hrule\vspace{.4em}
+  \textbf{#1}
+  \vspace{.4em}
+  \hrule
+  \vspace{\secskip}
+}
+
 %% AMSMath operators
 \DeclareMathOperator*{\argmax}{argmax}
 \DeclareMathOperator*{\argmin}{argmin}
