@@ -185,9 +185,19 @@ For $\sigma(v) = \frac{1}{1+e^{-v}}$ we have:
 \[P(t|\vec{x,\theta}) \rightarrow max_\theta \prod_{i=1}^n P(t_i|\vec{x_i,\theta)}\]
 \paragraph{Multiway}
 \[P(t=k|\vec{x}) = \frac{e^{y_k^*(\vec{x})}}{\sum_{\tilde{k}}e^{y_{\tilde{k}}^*(\vec{x})}} = \sigma_k(\vec{y}^*(\vec{x))}\]
-Soft-max mapping $\sigma_k(\vec{\nu}) = e^{\nu_k - lsexp(\vec{\nu})}$ with $lsexp(\vec{\nu}) = log \sum_{\tilde{k}}e^{\vec{\nu_{\tilde{k}}}} $
+Soft-max mapping $\sigma_k(\vec{\nu}) = e^{\nu_k - lsexp(\vec{\nu})}$ with $lsexp(\vec{\nu}) = log \sum_{\tilde{k}}e^{\vec{\nu_{\tilde{k}}}}$
+
 \section{Support Vector Machines}
 Kernel function: $K(\vec x, \vec x') = \phi(\vec x)^T\phi(\vec x')$
+\paragraph{Max margin perceptron}
+\[\max_{w,b} \left\{ \gamma_D(\vec{w},b) = \min_{i=1..n} \frac{t_i(\vec{w}^T \phi(\vec{x_i}) + b)}{||\vec{w}||} \right\}\]
+!! D linearly separable
+\paragraph{Soft margin SVM}
+\[\min_{w,b,\xi} \frac{1}{2}||\vec{w}||^2 + C \sum_{i=1}^n \xi_i\]
+subject to $t_i(\vec{w}^T \vec{\phi(x_i)} + b) \geq 1-\xi_i,~ \xi_i \geq 0$
+\[\equiv \min_{w,b} \frac{1}{2C}||\vec{w}||^2 + \sum_{i=1}^n [1-t_iy_i]_+\]
+\paragraph{Error function}
+\[E_{svm}(\vec{w},b) = \sum_{i=1}^n [1-t_iy_i]_+\]
 \section{Model Selection and Evaluation}
 \section{Dimensionality Reduction}
 \section{Unsupervised Learning}
@@ -205,6 +215,8 @@ $$g(a)'=1 - g(a)^2$$
 \paragraph{Beta($\alpha,\beta)$}
 \[p(p_1|\alpha,\beta) = \frac{1}{B(\alpha,\beta)}(p_1)^{\alpha -1)}(1-p_1)^{\beta -1}\]
 With $B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$
+\paragraph{Hing function}
+\[[x]_+ = max(x,0)\]
 \paragraph{Cross-entropy, divergence}
 \[D(\vec{q}||\vec{p}) = \sum_{l=1}^L q_l log(\frac{q_l}{p_l}) \geq 0\]
 %\appendix{Lagrange Multipliers and Lagrangian Duality}
