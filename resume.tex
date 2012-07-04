@@ -204,7 +204,29 @@ subject to $t_i(\vec{w}^T \vec{\phi(x_i)} + b) \geq 1-\xi_i,~ \xi_i \geq 0$
 \[L(\vec{w},b,\alpha) = \frac{1}{2}||\vec{w}||^2 + \sum_{i=1}^n \alpha_i(1-t_iy_i)\]
 Primal: $\min_{\vec{w},b} \max_{0 \leq \alpha_i \leq C} L(\vec{w},b,\alpha)$
 Dual: max-min (reversed) leads to:
+\[\phi_D(\alpha) = \sum_i \alpha_i - \frac{1}{2} \sum_{i,j} \alpha_i t_i K_{ij} t_j \alpha_j\]
+Discriminant $y^*(\vec{x}) = \vec{w_*}^T \phi(\vec{x}) = \sum_{i=1}^n \alpha_{*,i} t_i K(\vec{x_i},\vec{x_j}) + b_*$\\
+$b = \frac{1}{|S|} \sum_{i \in S} (t_i - \tilde{y}_i)$, S = essential support vectors
+\paragraph{Support vectors}
+\begin{equation*}
+\left\lbrace
+\begin{array}{ll}
+\alpha_i = 0 & 1-t_iy_i \leq 0 ~not \\
+\alpha_i \in (0,C) & 1-t_iy_i = 0 ~essential\\
+\alpha_i = C & 1-t_iy_i \geq 0 ~bound\\
+\end{array}
+\right.
+\end{equation*}
+
 \section{Model Selection and Evaluation}
+\paragraph{Bias-Variance Decomposition}
+\begin{align*}
+E[(\hat{y}(\vec{x}|D) - E[t|x])^2|x] = \\ \underbrace{(E[\hat{y}(\vec{x}|D)|\vec{x}] - E[t|\vec{x}])^2}_{Bias^2} + \underbrace{Var(\hat{y}(x|D) | \vec{x})}_{Variance}
+\end{align*}
+\paragraph{Ensemble methods}
+\[\hat{y}_{ens}(\vec{x}) = \frac{1}{L} \sum_{l=1}^L \hat{y}_l(\vec{x})\]
+\paragraph{Crossvalidation}
+\[\hat{R}_{CV}^{(M)}(D) = \frac{1}{n}\sum_{i=1}^n L(\hat{y}_\nu^{-m(i)},t_i)\]
 \section{Dimensionality Reduction}
 \section{Unsupervised Learning}
 \section{Maths}
