@@ -256,7 +256,7 @@ Update $\pi_k = \frac{n_k}{n}, n_k = \sum_{i=1}^nP(t_i=k|\vec{x_i})$
 E-step: $Q_i(\vec{h_i}) \leftarrow P(\vec{h_i}|\vec{x_i},\vec{\theta)}$
 M-step: maximize surrogate criterion
 \begin{align*}
-E(\vec{\theta};\{Q_i\}) = \sum_{i=1}^n E_i(\vec{\theta};Q_i) \\= \sum_{i=1}^n E_{Q_i} [logP(\vec{x_i},\vec{h_i}|\vec{\theta})]
+E(\vec{\theta};\{Q_i\}) &= \sum_{i=1}^n E_i(\vec{\theta};Q_i) \\&= \sum_{i=1}^n E_{Q_i} [logP(\vec{x_i},\vec{h_i}|\vec{\theta})]
 \end{align*}
 
 \section{Maths} 
