@@ -96,7 +96,7 @@ Wrt b: set $\vec{x} = 1$, residual for output layer
 
 $\eta$ = learning rate e.g. $1/k$, $\mu$ = momentum term
 
-\section{Linear Regression. Least Squares Estimation}
+\section{Lin. Regr. / LSE}
 \paragraph{Univariate Linear Regression}
 $\langle x \rangle = n^{-1} \sum_i x_i $. Similar for $t, tx, x^2$
 \[y_i = wx_i + b \]
@@ -129,7 +129,7 @@ f^*(\vec x) &= \argmin_{j \in \tau} \sum_{k \in \tau} L(j,k) P(t = k | \vec x) \
 
 \paragraph{Discriminant}
 \[y^*(x) = log \frac{p(\vec{x}|t=1)}{p(\vec{x}|t=0)} + log \frac{P(t=1)}{P(t=0)} > 0\]
-\section{Probabilistic Models. Maximum Likelihood}
+\section{Prob. Models. / MLE}
 
 \paragraph{Gaussian}
 \[N(x|\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]
@@ -171,7 +171,8 @@ $\rightarrow (\vec{\Phi}^T \vec{\Phi} + \nu \vec{I})\vec{w} = \vec{\Phi}^T \vec{
 \hat{p_1} = \argmax_{p_1} p(p1|D) \\
 = \argmax_{p_1} P(D|p_1)p(p_1)
 \end{align*}
-\section{Conditional Likelihood. Logistic Regression}
+
+\section{Cond. Likelihood / Log. Reg.}
 For $\sigma(v) = \frac{1}{1+e^{-v}}$ we have:
 \begin{align*}
  E_{log}(\vec w) &= - \log P(\vec t | \vec w)\\
