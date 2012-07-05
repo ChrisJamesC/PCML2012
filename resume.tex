@@ -73,11 +73,9 @@ $\vec{w}_{k+1} = \vec{w}_k - \eta \nabla_{\vec w}E_i(\vec{w}_k)$
 
 \paragraph{Gradient for Squared Error}
 (yields normal equation for least squares if set to 0)
-\begin{align*} \nabla_{\vec w}E&= \sum_{i=1}^n\frac{\partial E}{\partial y_i}
+\[ \nabla_{\vec w}E = \sum_{i=1}^n\frac{\partial E}{\partial y_i}
 \nabla_{\vec w}y_i 
-&= \vec\Phi^T( \underbrace{\vec \Phi \vec w - \vec t}_{residual})
-\end{align*}
-
+= \vec\Phi^T( \underbrace{\vec \Phi \vec w - \vec t}_{residual}) \]
 
 \section{Multi-Layer Perceptron}
 \paragraph{Forward pass}
@@ -228,7 +226,8 @@ $b = \frac{1}{|S|} \sum_{i \in S} (t_i - \tilde{y}_i)$, S = essential support ve
 \section{Model Selection and Evaluation}
 \paragraph{Bias-Variance Decomposition}
 \begin{align*}
-E[(\hat{y}(\vec{x}|D) - E[t|x])^2|\vec x] = \\ \underbrace{(E[\hat{y}(\vec{x}|D)|\vec{x}] - E[t|\vec{x}])^2}_{Bias^2} + \underbrace{Var(\hat{y}(x|D) | \vec{x})}_{Variance}
+&E[(\hat{y}(\vec{x}|D) - E[t|x])^2|\vec x] = \\
+&\underbrace{(E[\hat{y}(\vec{x}|D)|\vec{x}] - E[t|\vec{x}])^2}_{Bias^2} + \underbrace{Var(\hat{y}(x|D) | \vec{x})}_{Variance}
 \end{align*}
 \textbf{Ens. meth.}
 $\hat{y}_{ens}(\vec{x}) = \frac{1}{L} \sum_{l=1}^L \hat{y}_l(\vec{x})$\\
