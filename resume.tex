@@ -210,7 +210,7 @@ $d_*$ max-min (reversed).Weak duality $d_* \leq p_*$ (strong duality iff =)\\
 $L(\vec{w},b,\alpha) = \frac{1}{2}||\vec{w}||^2 + \sum_{i=1}^n \alpha_i(1-t_iy_i)$
 Maximize Criterion for dual:
 \[\phi_D(\alpha) = \sum_i \alpha_i - \frac{1}{2} \sum_{i,j} \alpha_i t_i K_{ij} t_j \alpha_j\] subj. to $\alpha_i \in [0,C], \sum_i \alpha_it_i = 0$
-Discriminant $y^*(\vec{x}) = \vec{w_*}^T \phi(\vec{x}) = \sum_{i=1}^n \alpha_{*,i} t_i K(\vec{x_i},\vec{x_j}) + b_*$\\
+Discriminant $y^*(\vec{x}) = \vec{w_*}^T \phi(\vec{x}) = \sum_{i=1}^n \alpha_{*,i} t_i K(\vec{x},\vec{x_i}) + b_*$\\
 $b = \frac{1}{|S|} \sum_{i \in S} (t_i - \tilde{y}_i)$, S = essential support vectors
 \paragraph{Support vectors}
 \begin{equation*}
@@ -246,7 +246,7 @@ with $m_k = \vec{\mu}^T \vec{\mu}_k$. Maximize ratio!
 \[S_B = (\hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0)(\hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0)^T = \vec d \vec d^T\]
 \[S_W = n^{-1} \sum_{i=1}^n(\vec{x_i} - \vec{\hat{\mu}_{t_i}})(\vec{x_i} - \vec{\hat{\mu}_{t_i}})^T\]
 \[\vec{\hat{\mu}}_{FLD} = \frac{S_W^{-1} \vec{d}}{||S_W^{-1} \vec{d}||}, ~ \vec{d} = \hat{\vec{\mu}}_1 -\hat{\vec{\mu}}_0\]
-Total variance $S=S_W + \alpha(1-\alpha)\vec d \vec d^T$\\with $ \alpha = \frac{n_1}{n}$
+Total covariance $S=S_W + \alpha(1-\alpha)\vec d \vec d^T$\\with $ \alpha = \frac{n_1}{n}$
 \paragraph{LDA}
 Generalization for multiple classes: $S=S_W+S_B$, $S_B = n^{-1}\sum_k n_k \vec d_k\vec d_k^T, ~ \vec d_k = \vec {\hat{\mu}}_k - \vec{ \hat{\mu}}$
 \[\max_{U \in \Re^{d \times M}} tr(U^T S_B U) ~s.t.~ U^T S_WU = I\]
@@ -293,8 +293,8 @@ $tr(\vec{A}) = \sum_{j=1}^{d}a_{jj} = \sum_{j=1}^d \lambda_j$
 \paragraph{Eigs}
 $\vec{Av} = \lambda \vec{v}, ~\vec{A} = \vec{U \Lambda U^{-1}}$\\
 $|A| = \prod_{j=1}^d \lambda_j$
-\paragraph{Positive definite matrix} $\vec A \in \Re^ {d\times d}$ symmetric:
-$\vec v^T \vec A \vec v \geq 0 ~ \forall \vec v \in \Re^d$
+\paragraph{Positive semi-definite matrix} $\vec A \in \Re^ {d\times d}$ symmetric:
+$\vec v^T \vec A \vec v \geq 0 ~ \forall \vec v \in \Re^d, \vec v\neq 0$
 \paragraph{Beta($\alpha,\beta)$}
 \[p(p_1|\alpha,\beta) = \frac{1}{B(\alpha,\beta)}(p_1)^{\alpha-1}(1-p_1)^{\beta -1}\]
 With $B(\alpha,\beta) = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha + \beta)}$.
