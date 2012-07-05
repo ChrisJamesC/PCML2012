@@ -120,7 +120,7 @@ $Var(t) = E[Var(t|x)] + Var(E[t|x])$
 Bayes error: $R = P\{f(x) \neq t\}$
 \[ R^* = R(f^*) = 1 - \E \left [ \max_{k\in\tau} P(t = k | \vec x) \right ] \]
 Optimal discriminant:
-\[y^*(x) = log \frac{p(\vec{x}|t=1)}{p(\vec{x}|t=0)} + log \frac{P(t=1)}{P(t=0)} > 0\]
+\[y^*(x) = \log \frac{p(\vec{x}|t=1)}{p(\vec{x}|t=0)} + \log \frac{P(t=1)}{P(t=0)} > 0\]
 \paragraph{Bayes under Loss function}
 Risk: $ R(f) = \E \left [ L(f(\vec x), t) \right ]$
 Opt. Classifier:
@@ -128,7 +128,9 @@ Opt. Classifier:
 \[ R^* = \E \left [ \min_{j\in\tau} \sum_{k \in \tau} L(j,k) P(t = k | \vec x) \right ] \]
 
 \section{Probab. Models. Max. Likelihood}
-\paragraph{MLE} $\hat{p}_1 = \argmax_{p_1 \in [0,1]}P(D|p_1)$ Maximize $logP(D|p_1) :  \frac{dlogP(D|p_1)}{dp_1} = 0$ or minimize $-logP(D|p_1)$
+\paragraph{MLE} $\hat{p}_1 = \argmax_{p_1 \in [0,1]}P(D|p_1)$ Maximize
+$\log P(D|p_1) :  \frac{d \log P(D|p_1)}{dp_1} = 0$ or minimize $-\log
+P(D|p_1)$
 \paragraph{Gaussian}
 \[N(x|\mu,\sigma^2) = \frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}\]
 Multivariate $N(\vec{x}|\vec{\mu},\vec{\Sigma}) =$
@@ -144,10 +146,10 @@ Sample
 \paragraph{ML plugin discriminant}
 \begin{equation*}
 \begin{split}
-\hat{y}(\vec{x}) = \hat{\vec{w}}^T \vec{x} - \frac{1}{2}(||\hat{\vec{\mu}}_{+1} ||^2 - || \hat{\vec{\mu}}_{-1} ||^2) \\ + log\frac{\hat{\pi}_1}{1-\hat{\pi}_1} ~ where~ \hat{\pi}_1 = n_1 / n ~ and~  \\ \hat{\vec{w}}=\hat{\vec{\mu}}_{+1} - \hat{\vec{\mu}}_{-1}
+\hat{y}(\vec{x}) = \hat{\vec{w}}^T \vec{x} - \frac{1}{2}(||\hat{\vec{\mu}}_{+1} ||^2 - || \hat{\vec{\mu}}_{-1} ||^2) \\ + \log\frac{\hat{\pi}_1}{1-\hat{\pi}_1} ~ where~ \hat{\pi}_1 = n_1 / n ~ and~  \\ \hat{\vec{w}}=\hat{\vec{\mu}}_{+1} - \hat{\vec{\mu}}_{-1}
 \end{split}
 \end{equation*}
-\[y_k^*(\vec{x}) = -\frac{1}{2}||\vec{x}-\vec{\mu}_k||^2 + log~P(t=k) + C\]
+\[y_k^*(\vec{x}) = -\frac{1}{2}||\vec{x}-\vec{\mu}_k||^2 + \log P(t=k) + C\]
 
 \paragraph{Naive Bayes Classifier}
 \[ P(\vec x | N,t=k) = \prod_{m=1}^M \left ( p_m^{(k)} \right
@@ -185,7 +187,7 @@ joint max. likeli. $max_{\theta} \prod_{i=1}^n p(\vec{x_i},t_i|\vec{\theta})$
 conditional maximum likelihood
 \paragraph{Multiway logistic Regression}
 \[P(t=k|\vec{x}) = \frac{e^{y_k^*(\vec{x})}}{\sum_{\tilde{k}}e^{y_{\tilde{k}}^*(\vec{x})}} = \sigma_k(\vec{y}^*(\vec{x))}\]
-Soft-max mapping $\sigma_k(\vec{\nu}) = e^{\nu_k - lsexp(\vec{\nu})}$ with $lsexp(\vec{\nu}) = log \sum_{\tilde{k}}e^{\vec{\nu}_{\tilde{k}}}$
+Soft-max mapping $\sigma_k(\vec{\nu}) = e^{\nu_k - lsexp(\vec{\nu})}$ with $lsexp(\vec{\nu}) = \log \sum_{\tilde{k}}e^{\vec{\nu}_{\tilde{k}}}$
 $\nabla_v lsexp(\vec v) = \vec \sigma(\vec v)$
 
 \section{Support Vector Machines}
@@ -269,14 +271,15 @@ $\vec{\mu}_k = \frac{1}{n_k}\sum_{i=1}^nP(t_i=k|\vec{x_i})\vec{x_i}$
 E-step: $Q_i(\vec{h_i}) \leftarrow P(\vec{h_i}|\vec{x_i},\vec{\theta)}$
 M-step: maximize surrogate criterion
 \begin{align*}
-E(\vec{\theta};\{Q_i\}) = \sum_{i=1}^n E_i(\vec{\theta};Q_i) \\= \sum_{i=1}^n E_{Q_i} [logP(\vec{x_i},\vec{h_i}|\vec{\theta})]
+E(\vec{\theta};\{Q_i\}) = \sum_{i=1}^n E_i(\vec{\theta};Q_i) \\=
+\sum_{i=1}^n E_{Q_i} [\log P(\vec{x_i},\vec{h_i}|\vec{\theta})]
 \end{align*}
 Perfect for missing data !
 Hint:
 \begin{align*}
-\frac{\partial logp(x_i)}{\partial h_k} = \frac{1}{p(x_i)}\frac{\partial p(x_i|h_k)P(h_k)}{\partial h_k} \\
-= \frac{p(x_i|h_k)P(h_k)}{p(x_i)}\frac{\partial logp(x_i|h_k)}{\partial h_k} \\
-= P(h_k|x_i) \frac{\partial logp(x_i|h_k)}{\partial h_k}
+\frac{\partial \log p(x_i)}{\partial h_k} = \frac{1}{p(x_i)}\frac{\partial p(x_i|h_k)P(h_k)}{\partial h_k} \\
+= \frac{p(x_i|h_k)P(h_k)}{p(x_i)}\frac{\partial \log p(x_i|h_k)}{\partial h_k} \\
+= P(h_k|x_i) \frac{\partial \log p(x_i|h_k)}{\partial h_k}
 \end{align*}
 \section{Beautiful Maths} 
 \paragraph{Cauchy-Schwarz}
@@ -302,7 +305,7 @@ Mode $\frac{\alpha - 1}{\alpha + \beta - 2}$
 \paragraph{Hinge function}
 $[x]_+ = max(x,0)$
 \paragraph{Cross-entropy, divergence}
-\[D(\vec{q}||\vec{p}) = \sum_{l=1}^L q_l log(\frac{q_l}{p_l}) \geq 0\]
+\[D(\vec{q}||\vec{p}) = \sum_{l=1}^L q_l \log(\frac{q_l}{p_l}) \geq 0\]
 %\appendix{Lagrange Multipliers and Lagrangian Duality}
 \line(1,0){140} \\
 \tiny
